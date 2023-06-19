@@ -26,3 +26,6 @@ class TestPnrStatus(unittest.TestCase):
         self.assertRaises(Exception, "123abc")
         # Test when input is valid and we get valid response
         self.assertEqual(check_pnr_status("8703198337"), mocked_response)
+
+if __name__ == "__main__":
+    unittest.main()

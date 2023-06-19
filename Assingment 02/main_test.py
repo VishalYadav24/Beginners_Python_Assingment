@@ -9,3 +9,6 @@ class TestSortAlphanumericString(unittest.TestCase):
             sort_alphanumeric_string("dsfsfhj1231ADS"),
             ["d", "f", "f", "h", "j", "s", "s", "A", "D", "S", "1", "1", "3", "2"],
         )
+
+if __name__ == "__main__":
+    unittest.main()
