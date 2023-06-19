@@ -2,7 +2,16 @@ import argparse
 import re
 
 
-def count_consecutive_duplicate(card_no):
+def count_consecutive_duplicate(card_no:str):
+    """ Count consecutive duplicate numbers in a string.
+        
+        Arguments: 
+              card_no : string of 16 digit numbers
+
+        Returns : 
+              True : if number of consecutive numbers is more than allowed limit i.e 4 times
+              False : if number of consecutive numbers is less than allowed limit
+    """
     repeating_numbers = {}
     duplicates_more_than_allowed = False
     for i in range(0, len((card_no)) - 1):
@@ -20,6 +29,18 @@ def count_consecutive_duplicate(card_no):
 
 
 def validate_input(card_no: str):
+    """ Valid credit card number provided by user by checking below conditions.
+           - Only 16 digits allowed
+           - digits can be in group of 4 separated by - hyphen
+           - must start with 4 or 5 or 6
+           - no consecutive duplicates allowed more than 4 times
+
+           Arguments:
+              card_no: str - The card number
+
+           Returns:
+             dict -  containing validations result for the card number    
+    """
     if count_consecutive_duplicate(card_no.replace("-", "")):
         raise Exception(
             {
@@ -30,7 +51,7 @@ def validate_input(card_no: str):
     regex = r"(^[4|5|6]\d{3})-(\d{4})-(\d{4})-(\d{4})"
     match = re.search(regex, card_no)
     if match:
-        print(
+        return (
             {
                 "success": "Valid Card",
                 "message": "Credit Card number is validated successfully",
