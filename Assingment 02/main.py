@@ -33,8 +33,7 @@ def sort_alphanumeric_string(alphanumeric_text: str):
                 if int(group) % 2 == 0:
                     even_numbers_list.append(characters)
                 else:
-                    odd_numbers_list.append(characters)
-                    
+                    odd_numbers_list.append(characters)           
     small_case_list.sort()
     upper_case_list.sort()
     even_numbers_list.sort()

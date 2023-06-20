@@ -1,9 +1,5 @@
 import unittest
-from main import (
-    validate_credit_card,
-    InvalidCardDuplicateException,
-    InvalidCardInputException,
-)
+from main import  validate_credit_card
 
 
 class TestValidateCreditCard(unittest.TestCase):
@@ -16,14 +12,14 @@ class TestValidateCreditCard(unittest.TestCase):
             "message": "Credit Card number is validated successfully",
         }
         # Testing with valid case
-        self.assertEquals(validate_credit_card(valid_input), valid_response)
+        self.assertEqual(validate_credit_card(valid_input), valid_response)
         # Testing with invalid case
         self.assertRaises(
-            InvalidCardDuplicateException, validate_credit_card, invalid_input
+            ValueError, validate_credit_card, invalid_input
         )
         # Testing with invalid case
         self.assertRaises(
-            InvalidCardInputException, validate_credit_card, invalid_length_input
+            ValueError, validate_credit_card, invalid_length_input
         )
 
 

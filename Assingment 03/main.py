@@ -2,22 +2,6 @@ import argparse
 import re
 
 
-class InvalidCardDuplicateException(Exception):
-    {
-        "success": "False",
-        "message": "More than 4 consecutive numbers are not allowed",
-    }
-    pass
-
-
-class InvalidCardInputException(Exception):
-    {
-        "success": "False",
-        "message": "Incorrect input,Please check your card number",
-    }
-    pass
-
-
 def count_consecutive_duplicate(card_no: str):
     """Count consecutive duplicate numbers in a string.
 
@@ -38,7 +22,6 @@ def count_consecutive_duplicate(card_no: str):
                 repeating_numbers[card_no[i]] = len(card_no[i])
 
     for i in repeating_numbers.values():
-        print(i)
         if i > 4:
             duplicates_more_than_allowed = True
     return duplicates_more_than_allowed
@@ -58,7 +41,7 @@ def validate_credit_card(card_no: str):
       dict -  containing validations result for the card number
     """
     if count_consecutive_duplicate(card_no.replace("-", "")):
-        raise InvalidCardDuplicateException
+        raise ValueError("More than 4 consecutive numbers are not allowed")
     regex = r"(^[4|5|6]\d{3})-(\d{4})-(\d{4})-(\d{4})"
     match = re.search(regex, card_no)
     if match:
@@ -67,7 +50,7 @@ def validate_credit_card(card_no: str):
             "message": "Credit Card number is validated successfully",
         }
     else:
-        raise InvalidCardInputException
+        raise ValueError("Incorrect input,Please check your card number")
 
 
 if __name__ == "__main__":
@@ -79,4 +62,7 @@ if __name__ == "__main__":
         help="enter your credit card number",
     )
     args: str = parser.parse_args().card_number
-    print(validate_credit_card(args))
+    try:
+     print(validate_credit_card(args))
+    except ValueError as error :
+        print(error)
