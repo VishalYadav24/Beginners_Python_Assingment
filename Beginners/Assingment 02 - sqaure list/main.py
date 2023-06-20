@@ -7,6 +7,7 @@ def restructure_list() -> None:
     try:
         original_list:str = input("Enter text of numbers only:")
         if int(original_list):
+            # converting user input to list then using map to calculate square of list elements
             list_with_squares:list[int] = list(map(lambda x: int(x) ** 2, list(original_list)))
             print(list_with_squares)
     except ValueError as e:
