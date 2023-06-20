@@ -3,7 +3,7 @@ import re
 import requests
 
 
-def check_input(pnr_no: str):
+def check_input(pnr_no: str)-> bool:
     """Check input string for 10 digits
     Arguments: pnr_no (str) : train pnr number input given by user
 

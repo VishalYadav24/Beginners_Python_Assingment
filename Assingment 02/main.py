@@ -2,7 +2,7 @@ import argparse
 import re
 
 
-def sort_alphanumeric_string(alphanumeric_text: str):
+def sort_alphanumeric_string(alphanumeric_text: str) -> list[str]:
     """Sort a given alphanumeric string in to list of strings following below pattern
         - small case alphabets comes first
         - large case alphabets comes second

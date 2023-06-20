@@ -2,7 +2,7 @@ import argparse
 import re
 
 
-def count_consecutive_duplicate(card_no: str):
+def count_consecutive_duplicate(card_no: str) -> bool:
     """Count consecutive duplicate numbers in a string.
 
     Arguments:
@@ -12,8 +12,8 @@ def count_consecutive_duplicate(card_no: str):
           True : if number of consecutive numbers is more than allowed limit i.e 4 times
           False : if number of consecutive numbers is less than allowed limit
     """
-    repeating_numbers = {}
-    duplicates_more_than_allowed = False
+    repeating_numbers: dict = {}
+    duplicates_more_than_allowed: bool = False
     for i in range(0, len((card_no)) - 1):
         if card_no[i] == card_no[i + 1]:
             if repeating_numbers.get(card_no[i]):
@@ -27,7 +27,7 @@ def count_consecutive_duplicate(card_no: str):
     return duplicates_more_than_allowed
 
 
-def validate_credit_card(card_no: str):
+def validate_credit_card(card_no: str) -> dict[str, str]:
     """Valid credit card number provided by user by checking below conditions.
     - Only 16 digits allowed
     - digits can be in group of 4 separated by - hyphen
@@ -63,6 +63,6 @@ if __name__ == "__main__":
     )
     args: str = parser.parse_args().card_number
     try:
-     print(validate_credit_card(args))
-    except ValueError as error :
+        print(validate_credit_card(args))
+    except ValueError as error:
         print(error)
