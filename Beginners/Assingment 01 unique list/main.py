@@ -1,16 +1,16 @@
 import argparse
 
 
-def filter_duplicate_list(text_with_redundancy: str)-> list:
-    """ Convert a list of of duplicate elements to list of unique elements.
-        
-        Arguments:
-            text_with_redundancy (str): The text of duplicate elements provided by user
-        Returns:
-           list -> list of unique elements    
+def filter_duplicate_list(text_with_redundancy: str) -> list:
+    """Convert a list of of duplicate elements to list of unique elements.
+
+    Arguments:
+        text_with_redundancy (str): The text of duplicate elements provided by user
+    Returns:
+       list -> list of unique elements
     """
     # converting user text to list
-    list_with_redundancy = list(text_with_redundancy)
+    list_with_redundancy: list[str] = list(text_with_redundancy)
     temp_list = []
     for element in list_with_redundancy:
         if element not in temp_list:
