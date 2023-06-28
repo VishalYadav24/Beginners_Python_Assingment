@@ -1,11 +1,20 @@
 import argparse
 
-def group_similar_audience(text):
- transformed_list = []
- count = 1
- prev_char = text[0]
+def group_similar_audience(sitting_order_text: str) -> list[str]:
+ """
+  Groups similar alphabets (denotes audience sitting order) and their count depending on the position they appear on original text given by user.
 
- for character in text[1:]:
+  Arguments:
+    sitting_order_text : string -> represents sitting order of audience
+
+    Returns:
+      list[str] -> list -> list of similar alphabets along with count of occurrence (denotes audience sitting order)  
+ """
+ transformed_list: list = []
+ count: int = 1
+ prev_char: str = sitting_order_text[0]
+
+ for character in sitting_order_text[1:]:
     if character == prev_char:
        count += 1
     else:
