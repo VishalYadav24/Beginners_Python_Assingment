@@ -13,6 +13,7 @@ def calculate_least_waiting_time(order_count: str, order_details: str) -> int:
         Least Average Waiting Time (int)    
 
     """
+    print(order_details)
     temp: list = []
     current_time: int = 0
     total_waiting_time: int = 0
@@ -26,15 +27,16 @@ def calculate_least_waiting_time(order_count: str, order_details: str) -> int:
         ]
         # sort the list by customer arrival time
         converted_list.sort(key=lambda x: x[0])
+        print(converted_list)
         # moving the order_details element which has less waiting time first
         for i in range(0, len(converted_list) - 1):
             current_arrival_time = converted_list[i][0]
             next_arrival_time = converted_list[i + 1][0]
             current_cooking_time = converted_list[i][1]
             next_cooking_time = converted_list[i + 1][1]
-
-            if (current_time - current_arrival_time + current_cooking_time) < (
-                current_time - next_arrival_time + next_cooking_time
+            print(current_time)
+            if ( current_arrival_time + current_cooking_time) < (
+                 next_arrival_time + next_cooking_time
             ):
                 pass
             else:
@@ -44,6 +46,7 @@ def calculate_least_waiting_time(order_count: str, order_details: str) -> int:
                 converted_list[i + 1] = temp
 
         # computing total waiting time and average waiting time
+        print(converted_list)
         for arrival_time, cooking_time in converted_list:
             if current_time > arrival_time:
                 total_waiting_time += current_time - arrival_time + cooking_time
