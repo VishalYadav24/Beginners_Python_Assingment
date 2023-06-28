@@ -1,14 +1,20 @@
 import itertools
 
 
-def find_probability():
-    n = int(input())
-    ls = input().split()
-    k = int(input())
-    com = list(itertools.combinations(ls, k))
-    tol = [i for i in com  if "a" in i ]
-    print(com,tol)
-    print(round((len(tol)/len(com)),3))
+def find_probability() -> str :
+    """
+    Calculates the probability of finding alphabet "a" in the given list
+
+    Returns:
+          string denoting the probability value : (float) corrected upto 3 decimals
+    """
+    length_of_input : int = int(input())
+    list_of_alphabets: list = input().split()
+    indices: int = int(input())
+    combinations_list = list(itertools.combinations(list_of_alphabets, indices))
+    desirable_list = [pair for pair in combinations_list  if "a" in pair ]
+    return (f'probability of finding "a" in  {len(combinations_list)} combinations is : {round((len(desirable_list)/len(combinations_list)),3)}')
 
 
-find_probability()
+if __name__ == "__main__":
+   print(find_probability())
