@@ -26,4 +26,4 @@ def get_max_share_price(csv_filename: str) -> str:
 
 
 if __name__ == "__main__":
-    print(get_max_share_price("Beginners/CSV parsing/company_share_data.csv"))
+    print(get_max_share_price("./company_share_data.csv"))
