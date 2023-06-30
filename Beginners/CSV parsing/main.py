@@ -9,20 +9,23 @@ def get_max_share_price(csv_filename: str) -> str:
         Returns:
           message string - showing info of company which had max share price in particular month of specific year  
     """
-    with open(csv_filename, "r") as file:
-        reader = csv.DictReader(file)
-        data = list(reader)
-        for row in data:
-            a = row["Company A"]
-            b = row["Company B"]
-            c = row["Company C"]
-            max_value = max(a, b, c)
-            for key, value in row.items():
-                if value == max_value:
-                    return(
-                        f'max share price for year {row["Year"]} and month {row["Month"]} is of company {key} which is: {max(a, b, c)}'
-                        
-                    )
+    try:
+        with open(csv_filename, "r") as file:
+            reader = csv.DictReader(file)
+            data = list(reader)
+            for row in data:
+                a = row["Company A"]
+                b = row["Company B"]
+                c = row["Company C"]
+                max_value = max(a, b, c)
+                for key, value in row.items():
+                    if value == max_value:
+                        return(
+                            f'max share price for year {row["Year"]} and month {row["Month"]} is of company {key} which is: {max(a, b, c)}'
+                            
+                        )
+    except FileNotFoundError:
+        raise FileNotFoundError("Please check file path")
 
 
 if __name__ == "__main__":
