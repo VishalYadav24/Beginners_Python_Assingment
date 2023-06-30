@@ -14,6 +14,7 @@ def minion_game_score_counter(text: str) -> str:
     """
     regex_patter = r"[A-Z]*"
     match = re.search(regex_patter, text)
+   
     if len(match.group()) == len(text):
         consonant_score: int = 0
         vowel_score: int = 0
